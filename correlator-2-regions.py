@@ -1,6 +1,6 @@
 import numpy as np
 import os
-import tworeg
+import two-regions as tworeg
 from tqdm import tqdm
 
 def load_data(path:str, xlist) :
