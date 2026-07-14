@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import tworeg
-import timing
 from tqdm import tqdm
 
 def load_data(path:str, xlist):
@@ -33,16 +32,10 @@ def build_theta(xlist, alist):
 
 def kde_in_out(xlist, alist, klist, dlist, elist) :
     
-    # Avoid magic numbers
     V, U, P, M = 0, 1, 2, 3
     L, R = 0, -1
     
     klist = np.transpose(klist, (1, 0, 2))
-
-    # thetaL = np.heaviside(-xlist, 0)
-    # thetaR = np.heaviside( xlist, 1) 
-    # theta = np.array([thetaL, thetaR]) # shape (reg, x)
-    # del thetaL, thetaR
 
     theta = build_theta(xlist, alist)
 
@@ -64,7 +57,6 @@ def kde_in_out(xlist, alist, klist, dlist, elist) :
     indices = (indices[0], indices[1] + [(0,1), (1,1), (2,1), (3,1)])
 
     # indices are (MODE,REGION), you need to add in the LAST columns the sonic ones. Check if they're the last ones in threereg_sonic.py just to be sure. 
-    
 
     IN, OUT = 0, -1
         
