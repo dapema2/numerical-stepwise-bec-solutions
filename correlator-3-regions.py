@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-import two-regions as tworeg
+tworeg = __import__('two-regions')
 from tqdm import tqdm
 
 def load_data(path:str, xlist):
