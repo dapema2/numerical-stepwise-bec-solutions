@@ -1,5 +1,4 @@
 import numpy as np
-# import matplotlib.pyplot as plt
 import os
 import tworeg
 from tqdm import tqdm
@@ -19,7 +18,6 @@ def load_data(path:str, xlist) :
 
 def kde_in_out(xlist, klist, dlist, elist) :
     
-    # Avoid magic numbers
     V, U, P, M = 0, 1, 2, 3
     L, R = 0, -1
     
@@ -61,7 +59,6 @@ def kde_in_out(xlist, klist, dlist, elist) :
 
 def kde_in_out_subsub(xlist, klist, dlist, elist) :
     
-    # Avoid magic numbers
     V = 0
     U = 1
     P = 2
@@ -88,18 +85,6 @@ def kde_in_out_subsub(xlist, klist, dlist, elist) :
     dpeOut = np.moveaxis(dpeOut, 1, 0) # (w, k, x)
 
     return kIn, kOut, dpeIn, dpeOut
-
-# @timing.function_timer
-# def vectorized_integral(xlist, dwlist, kIn, kOut, dpeIn, dpeOut, sMatrix):
-#     exponential = np.exp(1j * np.einsum('wo,x -> wox', kOut, xlist))
-#     u_inmode = np.einsum('woi,wox,wox -> wix', sMatrix, dpeOut, exponential)
-
-#     exponential = np.exp(1j * np.einsum('wi,x -> wix', kIn, xlist))
-#     aux = np.einsum('wix,wix -> wix', dpeIn, exponential)
-
-#     integral = np.real(np.einsum('wix, wiy, w -> xy', u_inmode, np.conjugate(u_inmode), dwlist))
-
-#     return integral
 
 def iterated_integral(xlist, dwlist, kIn, kOut, dpeIn, dpeOut, sMatrix):
     
