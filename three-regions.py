@@ -1,5 +1,4 @@
 import numpy as np
-from timing import function_timer
 import math
 import os
 
@@ -150,35 +149,6 @@ def inout_indexes(model):
         return supersuper_indices()
     else:
         raise ValueError(f"{model} is not a valid value for variable model")
-
-# def build_region_matching_matrices(klist, dlist, elist, disc_coords) -> :
-#     """
-#     Returns the matrices in the equation ML @ AL == MCL @ AC, MCR @ AC == MR @ AR
-#     ML = output[0], MC = output[1], MR = output[2]
-#     """
-#     k = np.moveaxis(klist, -1, 0)
-#     d = np.moveaxis(dlist, -1, 0)
-#     e = np.moveaxis(elist, -1, 0)
-
-#     # shapes are now (mode, c, w)
-
-#     modes = range(4)
-
-#     output = []
-
-#     for i, a in enumerate(disc_coords):
-#         j = i + 1
-#         auxL = [[d[mode, i] * np.exp(1j * k[mode, i] * a)              for mode in modes],
-#                 [k[mode, i] * d[mode, i] * np.exp(1j * k[mode, i] * a) for mode in modes],
-#                 [e[mode, i] * np.exp(1j * k[mode, i] * a)              for mode in modes],
-#                 [k[mode, i] * e[mode, i] * np.exp(1j * k[mode, i] * a) for mode in modes]]
-#         auxR = [[d[mode, j] * np.exp(1j * k[mode, j] * a)              for mode in modes],
-#                 [k[mode, j] * d[mode, j] * np.exp(1j * k[mode, j] * a) for mode in modes],
-#                 [e[mode, j] * np.exp(1j * k[mode, j] * a)              for mode in modes],
-#                 [k[mode, j] * e[mode, j] * np.exp(1j * k[mode, j] * a) for mode in modes]]
-#         output.append([auxL, auxR])
-
-#     return np.moveaxis(np.array(output), -1, -3) # shape (disc, LR, w, row, col)
 
 def create_delist_disc(klist, dlist, elist, disc):
     '''
