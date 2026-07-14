@@ -1,5 +1,4 @@
 import numpy as np
-from timing import function_timer
 import math
 import os
 
@@ -103,14 +102,6 @@ def build_region_matching_matrices(klist, dlist, elist):
          [e[mode]           for mode in modes],
          [k[mode] * e[mode] for mode in modes]]
     )
-
-    # region_matrices = np.array(
-    #     [[d[0], d[1], d[2], d[3]],
-    #      [k[0]*d[0], k[1]*d[1], k[2]*d[2], k[3]*d[3]],
-    #      [e[0], e[1], e[2], e[3]],
-    #      [k[0]*e[0], k[1]*e[1], k[2]*e[2], k[3]*e[3]],
-    #     ]
-    # )
 
     return np.moveaxis(region_matrices, 2, 0)
 
